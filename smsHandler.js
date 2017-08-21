@@ -23,6 +23,10 @@ http.createServer(function (req, res) {
 			
 			res.on('error', (err) => {
 				console.error(err);
+				if(err){
+					res.writeHead(500, {'Content-Type': 'text/html'});
+					return res.end("Internal server error");
+				}
 			});
 			
 			// read and decode request body
